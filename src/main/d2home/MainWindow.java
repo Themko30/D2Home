@@ -3,13 +3,13 @@ package main.d2home;
 import main.d2home.queries.*;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.EventQueue;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class MainWindow extends JFrame {
 
-    public static final String DB_URL = "jdbc:mysql://localhost:3306/d2home?serverTimezone=UTC";
     private JPanel mainPanel;
     private JLabel userLabel;
     private JLabel passwordLabel;
@@ -19,6 +19,18 @@ public class MainWindow extends JFrame {
     private JButton updateButton;
     private JButton deleteButton;
     private JButton selectButton;
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/g8?serverTimezone=UTC"; // TODO: cambia g8 in d2home
+
+    public static void main(String[] args) {
+        EventQueue.invokeLater(() -> {
+            try {
+                MainWindow frame = new MainWindow();
+                frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
 
     public MainWindow() {
         setContentPane(mainPanel);
@@ -26,33 +38,10 @@ public class MainWindow extends JFrame {
         setBounds(600, 300, 320, 256);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        insertButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                lancia("insert");
-            }
-        });
-
-        updateButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                lancia("update");
-            }
-        });
-
-        deleteButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                lancia("delete");
-            }
-        });
-
-        selectButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                lancia("select");
-            }
-        });
+        insertButton.addActionListener(e -> lancia("insert"));
+        updateButton.addActionListener(e -> lancia("update"));
+        deleteButton.addActionListener(e -> lancia("delete"));
+        selectButton.addActionListener(e -> lancia("select"));
     }
 
     private void lancia(String query) {
@@ -63,32 +52,28 @@ public class MainWindow extends JFrame {
             return;
         }
 
+        Connection con;
+        try {
+            con = DriverManager.getConnection(DB_URL, user, password);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Credenziali errate!", "Errore", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
         switch (query) {
             case "select":
-                Select select = new Select(user, password);
+                Select select = new Select(con);
                 break;
             case "insert":
-                Insert insert = new Insert(user, password);
+                Insert insert = new Insert(con);
                 break;
             case "update":
-                Update update = new Update(user, password);
+                Update update = new Update(con);
                 break;
             case "delete":
-                Delete delete = new Delete(user, password);
+                Delete delete = new Delete(con);
                 break;
         }
-    }
-
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    MainWindow frame = new MainWindow();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
     }
 }
