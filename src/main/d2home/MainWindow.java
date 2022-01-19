@@ -45,12 +45,16 @@ public class MainWindow extends JFrame {
     }
 
     private void lancia(String query) {
+        /* TODO: rimuovi commento
         String user = userTF.getText();
         String password = new String(passwordTF.getPassword());
         if(user.equals("") || password.equals("")) {
             JOptionPane.showMessageDialog(this, "Inserisci le credenziali!", "Errore", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        */
+        String user = "root";
+        String password = "studentiTSW";
 
         Connection con;
         try {
