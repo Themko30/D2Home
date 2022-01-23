@@ -29,7 +29,7 @@
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Nome:"/>
+          <text value=" Nome:"/>
         </properties>
       </component>
       <component id="acc33" class="javax.swing.JTextField" binding="nomeTF">
@@ -45,7 +45,7 @@
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Cognome:"/>
+          <text value=" Cognome:"/>
         </properties>
       </component>
       <component id="15cad" class="javax.swing.JTextField" binding="cognomeTF">
@@ -61,7 +61,7 @@
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Password:"/>
+          <text value=" Password:"/>
         </properties>
       </component>
       <component id="b8f9b" class="javax.swing.JLabel" binding="telefonoLabel">
@@ -69,7 +69,7 @@
           <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Telefono:"/>
+          <text value=" Telefono:"/>
         </properties>
       </component>
       <component id="cf33" class="javax.swing.JLabel" binding="indirizzoLabel">
@@ -77,7 +77,7 @@
           <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Indirizzo:"/>
+          <text value=" Indirizzo:"/>
         </properties>
       </component>
       <component id="4ea71" class="javax.swing.JLabel" binding="adminLabel">
@@ -85,7 +85,7 @@
           <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Admin:"/>
+          <text value=" Admin:"/>
         </properties>
       </component>
       <component id="3d612" class="javax.swing.JTextField" binding="telefonoTF">

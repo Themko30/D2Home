@@ -21,7 +21,7 @@
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="INSERT:"/>
+          <text value="INSERT INTO"/>
         </properties>
       </component>
       <component id="914c3" class="javax.swing.JTextField" binding="utenteTextField" default-binding="true">
@@ -40,7 +40,7 @@
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Email"/>
+          <text value=" Email:"/>
         </properties>
       </component>
       <component id="50735" class="javax.swing.JLabel">
@@ -48,7 +48,7 @@
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Nome"/>
+          <text value=" Nome:"/>
         </properties>
       </component>
       <component id="7927b" class="javax.swing.JLabel">
@@ -56,7 +56,7 @@
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Cognome"/>
+          <text value=" Cognome:"/>
         </properties>
       </component>
       <component id="61019" class="javax.swing.JLabel">
@@ -64,7 +64,7 @@
           <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Password"/>
+          <text value=" Password:"/>
         </properties>
       </component>
       <component id="c3986" class="javax.swing.JLabel">
@@ -72,7 +72,7 @@
           <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Telefono"/>
+          <text value=" Telefono:"/>
         </properties>
       </component>
       <component id="41954" class="javax.swing.JLabel">
@@ -80,7 +80,7 @@
           <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Indirizzo"/>
+          <text value=" Indirizzo:"/>
         </properties>
       </component>
       <component id="e21f9" class="javax.swing.JLabel">
@@ -88,7 +88,7 @@
           <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Admin"/>
+          <text value=" Admin:"/>
         </properties>
       </component>
       <component id="61b8a" class="javax.swing.JTextField" binding="emailTextField1">

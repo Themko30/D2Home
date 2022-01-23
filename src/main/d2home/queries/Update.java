@@ -49,13 +49,11 @@ public class Update extends JFrame {
         String indirizzo = indirizzoTF.getText().trim();
         String admin = adminTF.getText().trim();
         String email = whereTF.getText().trim();
-        String where = " WHERE email='";
-        where += email + "';";
 
-        int a;
+        int adminFlag;
         try {
-            a = Integer.parseInt(admin);
-            if (a != 0 && a != 1)
+            adminFlag = Integer.parseInt(admin);
+            if (adminFlag != 0 && adminFlag != 1)
                 throw new IllegalArgumentException();
         } catch (Exception exception) {
             JOptionPane.showMessageDialog(this, "Campo Admin non valido", "Errore", JOptionPane.ERROR_MESSAGE);
@@ -77,11 +75,11 @@ public class Update extends JFrame {
             sql += "indirizzo='"+ indirizzo + "',";
 
         sql = sql.substring(0, sql.length()-1); // rimuovo ultima virgola
-        sql += where;
 
         try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, a);
+            PreparedStatement ps = con.prepareStatement(sql + " WHERE email=?;");
+            ps.setInt(1, adminFlag);
+            ps.setString(2, email);
             if (ps.executeUpdate() != 1)
                 throw new Exception("Aggiornamento fallito. Controlla l'email e riprova");
 
