@@ -4,6 +4,9 @@ import main.d2home.queries.*;
 
 import javax.swing.*;
 import java.awt.EventQueue;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -80,6 +83,20 @@ public class MainWindow extends JFrame {
             case "delete":
                 Delete delete = new Delete(con);
                 break;
+        }
+    }
+
+    public static String getHashFromPassword(String password) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-512");
+            byte[] hashedPwd = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+            StringBuilder builder = new StringBuilder();
+            for (byte bit : hashedPwd) {
+                builder.append(String.format("%02x", bit));
+            }
+            return builder.toString();
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
         }
     }
 }

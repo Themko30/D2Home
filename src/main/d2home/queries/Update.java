@@ -1,5 +1,6 @@
 package main.d2home.queries;
 
+import main.d2home.MainWindow;
 import net.proteanit.sql.DbUtils;
 
 import javax.swing.*;
@@ -45,6 +46,7 @@ public class Update extends JFrame {
         String nome = nomeTF.getText().trim();
         String cognome = cognomeTF.getText().trim();
         String password = new String(passwordTF.getPassword());
+        String passwordhash = MainWindow.getHashFromPassword(password);
         String telefono = telefonoTF.getText().trim();
         String indirizzo = indirizzoTF.getText().trim();
         String admin = adminTF.getText().trim();
@@ -68,7 +70,7 @@ public class Update extends JFrame {
         if (!cognome.equals(""))
             sql += "cognome='"+ cognome + "',";
         if (!password.equals(""))
-            sql += "password='"+ password + "',";
+            sql += "password='"+ passwordhash + "',";
         if (!telefono.equals(""))
             sql += "telefono='"+ telefono + "',";
         if (!indirizzo.equals(""))
