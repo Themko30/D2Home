@@ -48,7 +48,7 @@ public class Update extends JFrame {
         String password = new String(passwordTF.getPassword());
         String passwordhash = MainWindow.getHashFromPassword(password);
         String telefono = telefonoTF.getText().trim();
-        String indirizzo = indirizzoTF.getText().trim();
+        String[] indirizzo = indirizzoTF.getText().trim().split(",");
         String admin = adminTF.getText().trim();
         String email = whereTF.getText().trim();
 
@@ -71,10 +71,11 @@ public class Update extends JFrame {
             sql += "cognome='"+ cognome + "',";
         if (!password.equals(""))
             sql += "password='"+ passwordhash + "',";
-        if (!telefono.equals(""))
-            sql += "telefono='"+ telefono + "',";
-        if (!indirizzo.equals(""))
-            sql += "indirizzo='"+ indirizzo + "',";
+        if (indirizzo.length == 3) {
+            sql += "via='" + indirizzo[0] + "',";
+            sql += "n_civico='" + indirizzo[1] + "',";
+            sql += "cap='" + indirizzo[2] + "',";
+        }
 
         sql = sql.substring(0, sql.length()-1); // rimuovo ultima virgola
 
@@ -84,6 +85,21 @@ public class Update extends JFrame {
             ps.setString(2, email);
             if (ps.executeUpdate() != 1)
                 throw new Exception("Aggiornamento fallito. Controlla l'email e riprova");
+
+            // Se vengono inseriti nuovi numeri, prima vengono cancellati i vecchi
+            if (!telefono.equals("")) {
+                ps = con.prepareStatement("DELETE FROM telefono WHERE utente=?");
+                ps.setString(1, email);
+                ps.executeUpdate();
+
+                String[] numeri = telefono.split(",");
+                for (String numero : numeri) {
+                    ps = con.prepareStatement("INSERT INTO telefono (numero, utente) VALUES (?,?)");
+                    ps.setString(1, numero);
+                    ps.setString(2, email);
+                    ps.executeUpdate();
+                }
+            }
 
             JOptionPane.showMessageDialog(this, "Aggiornamento riuscito!", "Successo", JOptionPane.INFORMATION_MESSAGE);
             ps = con.prepareStatement("SELECT * FROM utente WHERE email=?");

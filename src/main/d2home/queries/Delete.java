@@ -46,12 +46,16 @@ public class Delete extends JFrame {
         String email = emailTextField1.getText().trim();
 
         try {
-          PreparedStatement ps = con.prepareStatement("DELETE FROM utente WHERE email=?");
+          PreparedStatement ps = con.prepareStatement("DELETE FROM telefono WHERE utente=?");
           ps.setString(1, email);
+          ps.executeUpdate();
 
+          ps = con.prepareStatement("DELETE FROM utente WHERE email=?");
+          ps.setString(1, email);
           if (ps.executeUpdate() != 1) {
             throw new Exception("Cancellazione fallita, controlla email e riprova.");
           }
+
           JOptionPane.showMessageDialog(
               this, "Cancellazione riuscita!", "Successo", JOptionPane.INFORMATION_MESSAGE);
           ps = con.prepareStatement("SELECT * FROM utente");

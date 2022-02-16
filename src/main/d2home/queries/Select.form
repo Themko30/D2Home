@@ -73,6 +73,12 @@
             <item value="prodotto"/>
             <item value="utente"/>
             <item value="ordine"/>
+            <item value="agenzia"/>
+            <item value="domotica"/>
+            <item value="videogioco"/>
+            <item value="prodotti_ordinati"/>
+            <item value="telefono"/>
+            <item value="wishlist"/>
           </model>
         </properties>
       </component>

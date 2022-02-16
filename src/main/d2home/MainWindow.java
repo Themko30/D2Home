@@ -22,9 +22,7 @@ public class MainWindow extends JFrame {
     private JButton updateButton;
     private JButton deleteButton;
     private JButton selectButton;
-
-    // TODO: sostituisci "prova" con "d2home"
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/prova?serverTimezone=UTC";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/d2home?serverTimezone=UTC";
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
@@ -50,16 +48,12 @@ public class MainWindow extends JFrame {
     }
 
     private void lancia(String query) {
-        /* TODO: rimuovi commento
         String user = userTF.getText();
         String password = new String(passwordTF.getPassword());
         if(user.equals("") || password.equals("")) {
             JOptionPane.showMessageDialog(this, "Inserisci le credenziali!", "Errore", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        */
-        String user = "root";
-        String password = "studentiTSW";
 
         Connection con;
         try {
